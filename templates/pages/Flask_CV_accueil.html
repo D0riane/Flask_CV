@@ -1,0 +1,46 @@
+{% extends "conteneur.html" %}
+{% block corps %}
+
+<h1>Diplômes</h1>
+
+<p>
+     {% if diplomes %}
+                J'ai obtenu {{ diplomes|length }} diplômes :
+                <ul>
+                    {% for diplome_id, diplome in diplomes.items() %}
+                        <li> <a href="{{url_for('diplome', graduation_id=diplome_id)}}"> {{diplome.titre}}</a></li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                La base de données est en cours de constitution
+            {% endif %}
+</p>
+
+
+<h1>Expériences professionnelles</h1>
+
+<p>
+    {% if experiences %}
+                J'ai eu {{ experiences|length }} expériences professionnelles :
+                <ul>
+                    {% for experience_id, experience in experiences.items() %}
+                        <li> <a href="{{url_for('experience', experience_id=experience_id)}}"> {{experience.titre}}</a></li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                La base de données est en cours de constitution
+            {% endif %}
+</p>
+
+
+<h1>Autres informations :</h1>
+
+<p>
+    <ul>
+        <li>Langues : français (langue maternelle), italien (bilingue), anglais (scolaire). </li>
+        <li>Permis B </li>
+        <li>Diplômes divers : C2i, Brevet d'apptitude aux fonctions d'animateur. </li>
+    </ul>
+</p>
+
+{% endblock %}

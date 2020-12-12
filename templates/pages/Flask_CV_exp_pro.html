@@ -1,0 +1,27 @@
+{% extends "conteneur.html" %}
+
+{% block titre %}
+    {%if experience %}| experience : {{experience.nom}} {% endif %}
+{% endblock %}
+
+{% block corps %}
+        {% if experience %}
+            <h1>{{experience.titre}}</h1>
+            <h2>{{experience.spec}}</h2>
+            <h3>{{experience.institution}}</h3>
+            <h3>{{experience.ville}}</h3>
+            <p>
+                {% if experience.date[1] %}
+                    Date : {{experience.date[0]}} - {{experience.date[1]}}
+                {% else %}
+                    Date : {{experience.date[0]}}
+                {% endif %}
+            </p>
+            <p>
+            {{experience.description}}
+            </p>
+        {% else %}
+            <p>La base de données est en cours de constitution</p>
+        {% endif %}
+        <p><a href="{{url_for('accueil_cv')}}">Retour à l'accueil</a></p>
+{% endblock %}

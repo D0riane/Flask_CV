@@ -1,0 +1,27 @@
+{% extends "conteneur.html" %}
+
+{% block titre %}
+    {%if graduation %}| graduation : {{graduation.nom}} {% endif %}
+{% endblock %}
+
+{% block corps %}
+        {% if graduation %}
+            <h1>{{graduation.titre}}</h1>
+            <h2>{{graduation.spec}}</h2>
+            <h3>{{graduation.institution1}}</h3>
+            <h3>{{graduation.institution2}}</h3>
+            <p>
+                {% if graduation.date[1] %}
+                    Date : {{graduation.date[0]}} - {{graduation.date[1]}}
+                {% else %}
+                    Date : {{graduation.date[0]}}
+                {% endif %}
+            </p>
+            <p>
+            {{graduation.description}}
+            </p>
+        {% else %}
+            <p>La base de données est en cours de constitution</p>
+        {% endif %}
+        <p><a href="{{url_for('accueil_cv')}}">Retour à l'accueil</a></p>
+{% endblock %}
